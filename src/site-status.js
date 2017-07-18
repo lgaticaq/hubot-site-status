@@ -1,21 +1,21 @@
-# Description
-#   Chequea sitios caidos y avisa en tiempo real
-#
-# Configuration:
-#   No necesita configuracion especial aparte de redis
-#
-# Commands:
-#   hubot sites add - <Agrega un sitio a la lista>
-#   hubot sites delete - <Elimina un sitio de la lista>
-#   hubot sites all - <Lista los sitios que se están chequeando>
-#
-# Notes:
-#   Es necesario tener redis-brain
-#
-# Author:
-#   Fabian General[fabianwgl@protonmail.com]
+// Description
+//   Chequea sitios caidos y avisa en tiempo real
+//
+// Configuration:
+//   No necesita configuracion especial aparte de redis
+//
+// Commands:
+//   hubot sites add - <Agrega un sitio a la lista>
+//   hubot sites delete - <Elimina un sitio de la lista>
+//   hubot sites all - <Lista los sitios que se están chequeando>
+//
+// Notes:
+//   Es necesario tener redis-brain
+//
+// Author:
+//   Fabian General[fabianwgl@protonmail.com]
 
-const request = require('request');
+const request = require('request')
 
 module.exports = robot => {
   let downSites = robot.brain.get('downSites') ? robot.brain.get('sites') : []
@@ -83,7 +83,7 @@ module.exports = robot => {
               let numb = downSites.indexOf(x)
               downSites.splice(numb,1)
               robot.brain.set('downSites',downSites)
-              robot.messageRoom('general',`¡Hey!Ya volvió ${x}`)
+              robot.messageRoom('general',`¡Hey! Ya volvió ${x}`)
             }
           }
         });
