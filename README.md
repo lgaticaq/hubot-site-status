@@ -16,6 +16,8 @@ Then add **hubot-site-status** to your `external-scripts.json`:
 ["hubot-site-status"]
 ```
 
+Optional set HUBOT_SITES_CHANNEL to override default channel notification. Default general.
+
 ## Sample Interaction
 
 ```

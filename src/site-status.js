@@ -2,7 +2,7 @@
 //   Chequea sitios caidos y avisa en tiempo real
 //
 // Configuration:
-//   No necesita configuracion especial aparte de redis
+//   HUBOT_SITES_CHANNEL - Canal para notificar
 //
 // Commands:
 //   hubot sites add - <Agrega un sitio a la lista>
@@ -67,11 +67,12 @@ module.exports = robot => {
             throw error
           //console.log(`statusCode for ${x} :`, response && response.statusCode)
           //Cubrir errores del cliente y servidor
+          const channel = process.env.HUBOT_SITES_CHANNEL || 'general'
           if(response.statusCode>=400 && response.statusCode<=512){
             if(downSites.indexOf(x) == -1){
               downSites.push(x)
               robot.brain.set('downSites',downSites)
-              robot.messageRoom('general',`¡Hey! se cayó ${x}`)
+              robot.messageRoom(channel,`¡Hey! se cayó ${x}`)
             }
           }
           if(response.statusCode<=308){
@@ -79,7 +80,7 @@ module.exports = robot => {
               let numb = downSites.indexOf(x)
               downSites.splice(numb,1)
               robot.brain.set('downSites',downSites)
-              robot.messageRoom('general',`¡Hey! Ya volvió ${x}`)
+              robot.messageRoom(channel,`¡Hey! Ya volvió ${x}`)
             }
           }
         });
