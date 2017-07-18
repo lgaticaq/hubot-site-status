@@ -20,10 +20,6 @@ const request = require('request')
 module.exports = robot => {
   let downSites = robot.brain.get('downSites') ? robot.brain.get('sites') : []
 
-  robot.respond('check todos', msg => {
-
-  })
-
   robot.respond(/sites add (.*)/i, res => {
     let site = res.match[1]
     let sites = robot.brain.get('sites')
