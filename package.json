@@ -11,10 +11,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/hubot-scripts/hubot-site-status.git"
+    "url": "git://github.com/fabianwgl/hubot-site-status.git"
   },
   "bugs": {
-    "url": "https://github.com/hubot-scripts/hubot-site-status/issues"
+    "url": "https://github.com/fabianwgl/hubot-site-status/issues"
   },
   "dependencies": {
     "coffee-script": "~1.6",
